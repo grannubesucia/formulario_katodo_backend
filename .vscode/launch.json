@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FormularioKApplication<FormularioK>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.serpientem.FormularioK.FormularioKApplication",
+            "projectName": "FormularioK",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
