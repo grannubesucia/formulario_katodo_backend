@@ -1,0 +1,3 @@
+mvn clean install → compila y empaqueta tu proyecto
+
+mvn spring-boot:run → ejecuta la app Spring Boot directamente
