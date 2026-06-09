@@ -16,7 +16,7 @@ public class EmailService {
                 this.mailSender = mailSender;
         }
 
-        @Async
+        
         public void enviarConfirmaciones(Pedido pedido) {
                 enviarAlCliente(pedido);
                 enviarAlNegocio(pedido);
