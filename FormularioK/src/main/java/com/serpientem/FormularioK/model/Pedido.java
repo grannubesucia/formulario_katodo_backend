@@ -24,13 +24,13 @@ public class Pedido {
 
     private java.time.LocalDateTime fechaCreacion = java.time.LocalDateTime.now(); // Fecha de creación automática
 
-    @Lob // Campo grande (texto largo)
+    @Column(columnDefinition = "TEXT") // Campo grande (texto largo)
     private String materiales; // Materiales seleccionados
 
-    @Lob // Texto largo
+    @Column(columnDefinition = "TEXT") // Campo grande (texto largo)        
     private String materialesConfig; // Configuración de materiales
 
-    @Lob // Texto largo
+    @Column(columnDefinition = "TEXT") // Campo grande (texto largo)
     private String descripcionFinal; // Descripción final del pedido
 
     // --- Getters y Setters ---
