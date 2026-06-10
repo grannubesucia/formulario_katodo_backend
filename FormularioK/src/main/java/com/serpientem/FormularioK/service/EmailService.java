@@ -16,7 +16,7 @@ public class EmailService {
         private String resendApiKey;
 
         private static final String EMAIL_NEGOCIO = "katodociberjoyeria@gmail.com";
-        private static final String FROM = "Katodo Ciberjoyería <onboarding@resend.dev>";
+        private static final String FROM = "Kátodo Ciberjoyería <onboarding@resend.dev>";
 
         @Async
         public void enviarConfirmaciones(Pedido pedido) {
@@ -117,7 +117,12 @@ public class EmailService {
                                         .POST(HttpRequest.BodyPublishers.ofString(body))
                                         .build();
 
-                        HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+                        HttpResponse<String> response = HttpClient.newHttpClient()
+                                        .send(request, HttpResponse.BodyHandlers.ofString());
+
+                        System.out.println("STATUS: " + response.statusCode());
+                        System.out.println("BODY: " + response.body());
+
                 } catch (Exception e) {
                         System.err.println("Error enviando email: " + e.getMessage());
                 }
