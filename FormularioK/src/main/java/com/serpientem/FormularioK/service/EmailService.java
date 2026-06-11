@@ -25,66 +25,64 @@ public class EmailService {
         }
 
         private void enviarAlCliente(Pedido pedido) {
-                String texto = "Hola!\\n\\n" +
-                                "Hemos recibido tu pedido personalizado. Aqui tienes el resumen:\\n\\n" +
-                                "--------------------------\\n" +
-                                "Codigo de seguimiento: " + pedido.getCodigoSeguimiento() + "\\n" +
+                String texto = "Hola!\n\nHemos recibido tu pedido personalizado. Aqui tienes el resumen:\n\n" +
+                                "--------------------------\n" +
+                                "Codigo de seguimiento: " + pedido.getCodigoSeguimiento() + "\n" +
                                 "Tipo de pedido: "
-                                + (pedido.getTipoPedido().equals("propio") ? "Para mi" : "Para otra persona") + "\\n" +
+                                + (pedido.getTipoPedido().equals("propio") ? "Para mi" : "Para otra persona") + "\n" +
                                 (pedido.getDescripcionPersona() != null && !pedido.getDescripcionPersona().isEmpty()
-                                                ? "Descripcion persona: " + pedido.getDescripcionPersona() + "\\n"
+                                                ? "Descripcion persona: " + pedido.getDescripcionPersona() + "\n"
                                                 : "")
                                 +
                                 "Accesorio: " + pedido.getTipoAccesorio() +
                                 (pedido.getOtroAccesorio() != null && !pedido.getOtroAccesorio().isEmpty()
                                                 ? " (" + pedido.getOtroAccesorio() + ")"
                                                 : "")
-                                + "\\n" +
-                                "Presupuesto: " + pedido.getPresupuesto() + "\\n" +
+                                + "\n" +
+                                "Presupuesto: " + pedido.getPresupuesto() + "\n" +
                                 "Origen: " + (pedido.getOrigen().equals("nuevo") ? "Desde cero" : "Inspirado en diseno")
                                 +
                                 (pedido.getReferencia() != null && !pedido.getReferencia().isEmpty()
                                                 ? " - " + pedido.getReferencia()
                                                 : "")
-                                + "\\n" +
-                                "Materiales: " + formatearMateriales(pedido.getMateriales()) + "\\n" +
-                                "Config materiales: " + formatearConfig(pedido.getMaterialesConfig()) + "\\n" +
-                                "Descripcion final: " + pedido.getDescripcionFinal() + "\\n" +
-                                "--------------------------\\n\\n" +
-                                "Nos pondremos en contacto contigo pronto.\\n\\n" +
-                                "Gracias por confiar en nosotros!\\n" +
+                                + "\n" +
+                                "Materiales: " + formatearMateriales(pedido.getMateriales()) + "\n" +
+                                "Config materiales: " + formatearConfig(pedido.getMaterialesConfig()) + "\n" +
+                                "Descripcion final: " + pedido.getDescripcionFinal() + "\n" +
+                                "--------------------------\n\n" +
+                                "Nos pondremos en contacto contigo pronto.\n\n" +
+                                "Gracias por confiar en nosotros!\n" +
                                 "- Katodo Ciberjoyeria";
 
                 enviar(pedido.getEmailCliente(), "Confirmacion de tu pedido - Katodo Ciberjoyeria", texto);
-                // enviar(pedido.getEmailCliente(), "Confirmacion de tu pedido - Katodo Ciberjoyeria", texto);
+                // enviar(pedido.getEmailCliente(), "Confirmacion de tu pedido - Katodo
+                // Ciberjoyeria", texto);
         }
 
         private void enviarAlNegocio(Pedido pedido) {
-                String texto = "Se ha recibido un nuevo pedido:\\n\\n" +
-                                "--------------------------\\n" +
-                                "ID: " + pedido.getId() + "\\n" +
-                                "Email cliente: " + pedido.getEmailCliente() + "\\n" +
-                                "Tipo de pedido: " + pedido.getTipoPedido() + "\\n" +
-                                "Descripcion pers.: " + pedido.getDescripcionPersona() + "\\n" +
+                String texto = "Se ha recibido un nuevo pedido:\n\n" +
+                                "--------------------------\n" +
+                                "ID: " + pedido.getId() + "\n" +
+                                "Email cliente: " + pedido.getEmailCliente() + "\n" +
+                                "Tipo de pedido: " + pedido.getTipoPedido() + "\n" +
+                                "Descripcion pers.: " + pedido.getDescripcionPersona() + "\n" +
                                 "Accesorio: " + pedido.getTipoAccesorio() +
                                 (pedido.getOtroAccesorio() != null && !pedido.getOtroAccesorio().isEmpty()
                                                 ? " (" + pedido.getOtroAccesorio() + ")"
                                                 : "")
-                                + "\\n" +
-                                "Presupuesto: " + pedido.getPresupuesto() + "\\n" +
+                                + "\n" +
+                                "Presupuesto: " + pedido.getPresupuesto() + "\n" +
                                 "Origen: " + pedido.getOrigen() +
                                 (pedido.getReferencia() != null && !pedido.getReferencia().isEmpty()
                                                 ? " - " + pedido.getReferencia()
                                                 : "")
-                                + "\\n" +
-                                "Materiales: " + pedido.getMateriales() + "\\n" +
-                                "Config materiales: " + pedido.getMaterialesConfig() + "\\n" +
-                                "Descripcion final: " + pedido.getDescripcionFinal() + "\\n" +
+                                + "\n" +
+                                "Materiales: " + pedido.getMateriales() + "\n" +
+                                "Config materiales: " + pedido.getMaterialesConfig() + "\n" +
+                                "Descripcion final: " + pedido.getDescripcionFinal() + "\n" +
                                 "--------------------------";
 
                 enviar(EMAIL_NEGOCIO, "Nuevo pedido recibido - ID #" + pedido.getId(), texto);
-
-                // enviar(EMAIL_NEGOCIO, "Nuevo pedido recibido - ID #" + pedido.getId(), texto);
         }
 
         /*
@@ -95,14 +93,13 @@ public class EmailService {
 
         @Async
         public void enviarCambioEstado(Pedido pedido) {
-                String texto = "Hola!\\n\\n" +
-                                "Tu pedido ha sido actualizado:\\n\\n" +
-                                "--------------------------\\n" +
-                                "Pedido #" + pedido.getId() + "\\n" +
-                                "Accesorio: " + pedido.getTipoAccesorio() + "\\n" +
-                                "Nuevo estado: " + pedido.getEstado() + "\\n" +
-                                "--------------------------\\n\\n" +
-                                "Gracias por confiar en nosotros!\\n" +
+                String texto = "Hola!\n\nTu pedido ha sido actualizado:\n\n" +
+                                "--------------------------\n" +
+                                "Pedido #" + pedido.getId() + "\n" +
+                                "Accesorio: " + pedido.getTipoAccesorio() + "\n" +
+                                "Nuevo estado: " + pedido.getEstado() + "\n" +
+                                "--------------------------\n\n" +
+                                "Gracias por confiar en nosotros!\n" +
                                 "- Katodo Ciberjoyeria";
 
                 enviar(pedido.getEmailCliente(), "Actualizacion de tu pedido - Katodo Ciberjoyeria", texto);
@@ -110,8 +107,12 @@ public class EmailService {
 
         private void enviar(String to, String subject, String texto) {
                 try {
-                        String body = "{\"from\":\"" + FROM + "\",\"to\":[\"" + to + "\"],\"subject\":\"" + subject
-                                        + "\",\"text\":\"" + texto + "\"}";
+                        String textoEscapado = texto.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n");
+                        String subjectEscapado = subject.replace("\"", "\\\"");
+
+                        String body = "{\"from\":\"" + FROM + "\",\"to\":[\"" + to + "\"],\"subject\":\""
+                                        + subjectEscapado
+                                        + "\",\"text\":\"" + textoEscapado + "\"}";
 
                         HttpRequest request = HttpRequest.newBuilder()
                                         .uri(URI.create("https://api.resend.com/emails"))
@@ -123,11 +124,13 @@ public class EmailService {
                         HttpResponse<String> response = HttpClient.newHttpClient()
                                         .send(request, HttpResponse.BodyHandlers.ofString());
 
-                        System.out.println("STATUS: " + response.statusCode());
-                        System.out.println("BODY: " + response.body());
+                        System.out.println("[Resend] Envío a: " + to + " | STATUS: " + response.statusCode());
+                        if (response.statusCode() != 200 && response.statusCode() != 201) {
+                                System.out.println("[Resend Error Body]: " + response.body());
+                        }
 
                 } catch (Exception e) {
-                        System.err.println("Error enviando email: " + e.getMessage());
+                        System.err.println("Error enviando email a " + to + ": " + e.getMessage());
                 }
         }
 
