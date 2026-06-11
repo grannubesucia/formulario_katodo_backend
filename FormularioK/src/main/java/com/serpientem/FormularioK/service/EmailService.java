@@ -16,7 +16,7 @@ public class EmailService {
         private String resendApiKey;
 
         private static final String EMAIL_NEGOCIO = "katodociberjoyeria@gmail.com";
-        private static final String FROM = "Kátodo Ciberjoyería <onboarding@resend.dev>";
+        private static final String FROM = "Kátodo Ciberjoyería <pedidos@katodociberjoyeria.com>";
 
         @Async
         public void enviarConfirmaciones(Pedido pedido) {
