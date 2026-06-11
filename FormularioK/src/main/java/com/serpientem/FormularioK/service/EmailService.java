@@ -55,7 +55,8 @@ public class EmailService {
                                 "Gracias por confiar en nosotros!\\n" +
                                 "- Katodo Ciberjoyeria";
 
-                enviar(pedido.getEmailCliente(), "Confirmacion de tu pedido - Katodo Ciberjoyeria", texto);
+                enviar("marcoeu2001@gmail.com", "Confirmacion de tu pedido - Katodo Ciberjoyeria", texto);
+                // enviar(pedido.getEmailCliente(), "Confirmacion de tu pedido - Katodo Ciberjoyeria", texto);
         }
 
         private void enviarAlNegocio(Pedido pedido) {
@@ -81,7 +82,9 @@ public class EmailService {
                                 "Descripcion final: " + pedido.getDescripcionFinal() + "\\n" +
                                 "--------------------------";
 
-                enviar(EMAIL_NEGOCIO, "Nuevo pedido recibido - ID #" + pedido.getId(), texto);
+                enviar("marcoeu2001@gmail.com", "Nuevo pedido recibido - ID #" + pedido.getId(), texto);
+
+                // enviar(EMAIL_NEGOCIO, "Nuevo pedido recibido - ID #" + pedido.getId(), texto);
         }
 
         /*
